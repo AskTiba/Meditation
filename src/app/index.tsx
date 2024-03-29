@@ -17,7 +17,7 @@ const RootIndex = () => {
         <View className="flex justify-center items-center mt-96">
           <Text className="text-[20px] text-[#32cd32]">WELCOME</Text>
           <Text className="text-[17px] text-[#32cd32]">
-            Do medidation, stay focused.
+            Do meditation, stay focused.
           </Text>
           <Text className="text-[17px] text-[#32cd32]">
             Live a healthy life.
