@@ -1,7 +1,14 @@
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import React from "react";
 
-const Button = (props) => {
+// Define the type for the props
+type ButtonProps = {
+  isLoading?: boolean; // Optional prop, default is false
+  onPress: () => void; // Function prop
+  title?: string; // Optional prop
+};
+
+const Button: React.FC<ButtonProps> = (props) => {
   const isLoading = props.isLoading || false;
   return (
     <TouchableOpacity
@@ -9,7 +16,7 @@ const Button = (props) => {
       onPress={props.onPress}
       disabled={isLoading}
     >
-      {isLoading && isLoading == true ? (
+      {isLoading ? (
         <ActivityIndicator size="small" color="white" />
       ) : (
         <Text className="text-[18px]">{props.title}</Text>
