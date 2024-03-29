@@ -5,11 +5,12 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
 import { useColorScheme } from "@/src/components/useColorScheme";
+import CustomBackButton from "../components/CustomBackButton";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,7 +56,19 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="screens/SignUp" options={{ headerShown: true }} />
+        <Stack.Screen
+          name="screens/SignUp"
+          options={{
+            headerTitleAlign: "center",
+            headerLeft: () => (
+              <CustomBackButton
+                onPress={() => {
+                  router.push("/");
+                }}
+              />
+            ),
+          }}
+        />
         <Stack.Screen name="screens/Login" options={{ headerShown: true }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: "modal" }} />
