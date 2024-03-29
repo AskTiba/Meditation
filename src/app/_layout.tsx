@@ -69,7 +69,10 @@ function RootLayoutNav() {
             ),
           }}
         />
-        <Stack.Screen name="screens/Login" options={{ headerShown: true }} />
+        <Stack.Screen
+          name="screens/Login"
+          options={{ headerShown: true, headerTitleAlign: "center" }}
+        />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: "modal" }} />
       </Stack>
