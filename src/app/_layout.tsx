@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 import { useColorScheme } from "@/src/components/useColorScheme";
 import CustomBackButton from "../components/CustomBackButton";
+import { AuthProvider } from "../providers/AuthContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -54,28 +55,31 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="screens/SignUp"
-          options={{
-            headerTitleAlign: "center",
-            headerLeft: () => (
-              <CustomBackButton
-                onPress={() => {
-                  router.push("/");
-                }}
-              />
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="screens/Login"
-          options={{ headerShown: true, headerTitleAlign: "center" }}
-        />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-      </Stack>
+      <AuthProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="screens/SignUp"
+            options={{
+              headerShown: false,
+              headerTitleAlign: "center",
+              headerLeft: () => (
+                <CustomBackButton
+                  onPress={() => {
+                    router.push("/");
+                  }}
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="screens/Login"
+            options={{ headerShown: false, headerTitleAlign: "center" }}
+          />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+        </Stack>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
