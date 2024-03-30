@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       {isLoading ? (
         <ActivityIndicator size="small" color="white" />
       ) : (
-        <Text className="text-[18px]">{props.title}</Text>
+        <Text className="text-[18px] text-white">{props.title}</Text>
       )}
     </TouchableOpacity>
   );
