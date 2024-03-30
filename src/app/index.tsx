@@ -2,7 +2,6 @@ import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../components/Button";
 import { router } from "expo-router";
 
